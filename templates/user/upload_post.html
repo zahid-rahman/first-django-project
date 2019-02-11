@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block 'content' %}
+<hr>
+
+<div class="container">
+    <br>
+
+    <div class="row">
+        <div class="col-sm-9">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} text-center">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-9">
+            <div class="card">
+                <div class="card-body">
+                    <div class="container">
+
+                        <!--<img src="" class="rounded-circle" alt="Cinque Terre" >-->
+                        <div class="row">
+                            <div class="col-sm-7">
+
+
+                                <img src="{{user.profile.image.url}}" class="rounded-circle float-left"
+                                     style="border:1px solid black" height="200px">
+
+                            </div>
+                            <div class="col-sm-5">
+
+                                <h2>{{user.username}}</h2>
+                                <small class="form-text text-muted">{{user.email}}</small>
+                            </div>
+                        </div>
+
+
+                        <!--form here-->
+
+                        <br>
+                        <h3>Upload post</h3>
+                        <hr>
+                        <form method="post" enctype="multipart/form-data">
+
+                            {% csrf_token %}
+                            {{ps_form|crispy}}
+
+
+                            <button type="submit" class="btn btn-outline-info">Upload post</button>
+                            <hr>
+
+                            <br>
+                            <br>
+                        </form>
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="col-sm-3">
+            <!--<div class="card">-->
+            <!--<div class="card-body">-->
+            <div class="btn-group-vertical">
+                <a href="{% url 'profile' %}" class="btn btn-outline-info">Dashboard</a>
+                <a href="{% url 'upload.post.page' %}" class="btn btn-outline-info">{{user.username}} Posts</a>
+                <a href="#" class="btn btn-outline-info">Upload post</a>
+                <a href="#" class="btn btn-outline-info">Notifications <span class="badge badge-danger">1</span></a>
+                <a href="#" class="btn btn-outline-info">Profile setting</a>
+            </div>
+            <!--</div>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+{% endblock %}
