@@ -48,20 +48,18 @@ def profile_view(request):
 def upload_post_view(request):
 
     if request.method == 'POST':
-        ps_form = UserPostForm(request.POST)
+        ps_form = UserPostForm(request.POST,initial={"author": request.user.username})
+        # ps_form.fields['author_id'].initial = str(request.user.id)
+        # ps_form.fields['content'].initial = 'hello'
         if ps_form.is_valid():
-            ps_form.save()
 
-            # author_name = request.user.username
-            #
-            # new_submit = ps_form.save(commit=False)
-            # new_submit.author = author_name
-            # new_submit.save()
+            ps_form.save()
             messages.success(request, f'Your post uploaded successfully')
 
             return redirect('profile')
 
     else:
+        # ps_form = UserPostForm(initial={"author": request.user.username})
         ps_form = UserPostForm()
 
     context = {
@@ -80,3 +78,11 @@ def view_user_post(request,id):
 
 
     return render(request,'posts/post.html',context)
+
+
+def delete_user_post(request,id):
+    delete_post = Post.objects.get(pk=id)
+    delete_post.delete()
+
+    return redirect('user.post', id)
+

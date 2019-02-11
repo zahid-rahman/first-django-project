@@ -13,6 +13,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('blogapp.urls')),
+
+    # authenticated user
     path('profile/', user_views.profile_view, name='profile'),
     path('register/', user_views.register_view, name='register'),
     path('login/', auth_view.LoginView.as_view(template_name='auth/login.html'), name='login'),
@@ -20,6 +22,9 @@ urlpatterns = [
 
     path('upload_post/', user_views.upload_post_view, name='upload.post.page'),
     path('user_post/<int:id>', user_views.view_user_post, name='user.post'),
+    path('delete_user_post/<int:id>', user_views.delete_user_post, name='delete.post'),
+
+
 
 ]
 

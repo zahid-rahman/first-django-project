@@ -24,7 +24,7 @@
                 </a>
 
                     <br>
-                    <small style="font-size:12px" class="form-text text-muted">by <a href="">{{ user.username }}</a>
+                    <small style="font-size:12px" class="form-text text-muted">by  <a href=""> {{ post.author.username }}</a>
                         <span class="badge badge-info ml-2">category</span> <span
                                 class="ml-3">{{ post.date_time }}</span></small>
 
@@ -39,7 +39,22 @@
 
                     </p>
                     <hr>
-                    <a href="#">see more</a>
+
+                    <div class="row">
+                        <div class="com-sm-4">
+                            <div class="container">
+                                <a class="btn btn-link" href="#">see more</a>
+
+                            </div>
+                        </div>
+                        <div class="com-sm-4">
+
+                            <a href="#" class="btn btn-outline-info ml-2"><i class="far fa-thumbs-up"></i>
+                                like <span
+                                        class="badge badge-info">1</span></a>
+                        </div>
+                        <div class="com-sm-4"></div>
+                    </div>
                 </div>
             </div>
             <br>
