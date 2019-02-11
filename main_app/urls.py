@@ -20,6 +20,7 @@ urlpatterns = [
     path('logout/',auth_view.LogoutView.as_view(template_name='auth/logout.html'),name='logout'),
 
     path('upload_post/', user_views.upload_post_view, name='upload.post.page'),
+    path('user_post/<int:id>', user_views.view_user_post, name='user.post'),
 
 ]
 

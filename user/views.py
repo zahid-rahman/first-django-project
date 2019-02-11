@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib import messages
 from .forms import UserRegistrationForm , UserUpdateForm, ProfileUpdateForm,UserPostForm
 from django.contrib.auth.decorators import login_required
+from blogapp.models import Post
 
 
 # Create your views here.
@@ -47,7 +48,7 @@ def profile_view(request):
 def upload_post_view(request):
 
     if request.method == 'POST':
-        ps_form = UserPostForm(request.POST,instance=request.user.username)
+        ps_form = UserPostForm(request.POST)
         if ps_form.is_valid():
             ps_form.save()
 
@@ -68,3 +69,14 @@ def upload_post_view(request):
     }
 
     return render(request,'user/upload_post.html',context);
+
+
+def view_user_post(request,id):
+
+    user_post = Post.objects.filter(author_id=id)
+    context={
+        'user_post':user_post
+    }
+
+
+    return render(request,'posts/post.html',context)
