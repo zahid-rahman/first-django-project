@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'lmb)2mk=(w9g6kk1_%fez0!-qtmc4a(+cze+r*%fuuh@d-+et_'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -58,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR,'templates')
+            os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -74,7 +72,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main_app.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
@@ -86,14 +83,17 @@ WSGI_APPLICATION = 'main_app.wsgi.application'
 # }
 
 DATABASES = {
-'default': {
-    'ENGINE': 'django.db.backends.mysql',
-    'NAME': 'blog-app',
-    'HOST': '127.0.0.1',
-    'PORT': '3306',
-    'USER': 'root',
-    'PASSWORD': '',
-}}
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'blog-app',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': '',
+        'OPTIONS': {
+            'init_command': 'SET default_storage_engine=INNODB',
+        }
+    }}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
@@ -113,7 +113,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -127,7 +126,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
@@ -136,13 +134,10 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR,'static')
 # ]
 
-MEDIA_ROOT =os.path.join(BASE_DIR,'media')
-MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
-
-
-
-CRISPY_TEMPLATE_PACK='bootstrap4'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'profile'
-LOGIN_URL='login'
+LOGIN_URL = 'login'

@@ -20,3 +20,11 @@ class Profile(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+
+
+#
+# class Catgeories(models.Model):
+#     Category_name = models.CharField(max_length=100)
+#
+#     class Meta:
+#         db_table ='categories'

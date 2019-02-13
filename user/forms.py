@@ -39,8 +39,9 @@ class UserPostForm(forms.ModelForm):
     content = forms.Textarea()
 
 
+
     class Meta:
         model = Post
-        fields=['title','content','author']
+        fields=['title','content','author','category']
         # fields=('__all__')
         # widget= {'author_id': forms.HiddenInput()}
