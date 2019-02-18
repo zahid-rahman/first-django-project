@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+
+{% block 'content' %}
+<div class="container">
+    <div class="row">
+
+        <div class="col-sm-12">
+            <!--<br>-->
+            <!--<br>-->
+            <!--<br>-->
+            <!--<br>-->
+            <!--<br>-->
+            <br>
+            <br>
+
+
+            <div class="card">
+                <br>
+
+                <div class="container-fluid">
+                    <h2 align="center">You have been logged out</h2>
+                    <hr>
+                    <small class="form-text text-muted text-center">Need to login again? <a href="{% url 'login' %}"
+                                                                            class="ml-2">sign in now</a>
+                    </small>
+                    <br>
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+</div>
+{% endblock %}
