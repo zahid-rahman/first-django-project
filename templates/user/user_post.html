@@ -44,21 +44,51 @@
                         <!--form here-->
 
                         <br>
-                        <h3>Upload post</h3>
+                        <h3>{{ user.username }}'s posts</h3>
                         <hr>
-                        <form method="post" enctype="multipart/form-data">
-
-                            {% csrf_token %}
-                            {{ps_form|crispy}}
 
 
-                            <button type="submit" class="btn btn-outline-info">Upload post</button>
-                            <hr>
+                        <!--users post-->
 
-                            <br>
-                            <br>
-                        </form>
+                        {% for posts in user_post %}
+                        <div class="card">
+                            <h2 class="card-header"><b>{{ posts.title }}</b></h2>
+                            <div class="card-body">
+                                <!--<h5 class="card-title">Special title treatment</h5>-->
+                                <p style="line-height:1.2em; height:3.6em;overflow:hidden; font-size: 15px" class="card-text">
 
+                                     {{ posts.content }}
+
+                                </p>
+
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                           <a href="#" class="btn btn-outline-link">see more</a>
+                                <a href="#" class="btn btn-outline-info"> <i class="far fa-thumbs-up"></i> like <span class="badge badge-danger">1</span> </a>
+
+
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                    <div class="col-sm-4">
+
+                                        <a href="#" class="btn btn-outline-danger">delete</a>
+                                        <a href="#" class="btn btn-outline-primary">edit</a>
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <br>
+                        {% endfor %}
+
+
+
+                        <!--{{ user_post }}-->
 
                     </div>
                 </div>

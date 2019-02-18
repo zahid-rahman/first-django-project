@@ -1,15 +1,21 @@
-
-
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from .forms import UserRegistrationForm , UserUpdateForm, ProfileUpdateForm,UserPostForm
 from django.contrib.auth.decorators import login_required
-from .models import Profile
+from .models import Profile,Post
 
 
 def front_view(request):
-    return render(request,'index.html')
+
+    all_post = Post.objects.all()
+
+    context = {
+        'all_post':all_post
+    }
+
+
+    return render(request,'index.html',context)
 
 # def login_view(request):
 #     return render(request,'auth/login.html',{'title':'Login'})
@@ -70,7 +76,7 @@ def profile_view(request):
 def upload_post_view(request):
 
     if request.method == 'POST':
-        ps_form = UserPostForm(request.POST,instance=request.user.username)
+        ps_form = UserPostForm(request.POST)
         if ps_form.is_valid():
             ps_form.save()
 
@@ -93,3 +99,14 @@ def upload_post_view(request):
     }
 
     return render(request,'user/upload_post.html',context);
+
+
+
+def user_post(request,id):
+    post = Post.objects.filter(author_id=id)
+
+    context={
+        'user_post':post
+    }
+
+    return render(request,'user/user_post.html',context)

@@ -15,15 +15,33 @@
             <!--alert messages-->
 
 
-
-
-            {% for i in "xxxxx" %}
+            {% for posts in all_post %}
             <div class="card">
-                <h5 class="card-header"><b>Feature</b></h5>
+                <h2 class="card-header"><b>{{ posts.title }}</b></h2>
                 <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <!--<h5 class="card-title">Special title treatment</h5>-->
+                    <p style="line-height:1.2em; height:3.6em;overflow:hidden; font-size: 15px" class="card-text">
+
+                        {{ posts.content }}
+
+                    </p>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="#" class="btn btn-outline-link">see more</a>
+                            <a href="#" class="btn btn-outline-info"> <i class="far fa-thumbs-up"></i> like <span
+                                    class="badge badge-danger">1</span> </a>
+
+
+                        </div>
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4"></div>
+
+                    </div>
+
+
                 </div>
             </div>
             <br>
