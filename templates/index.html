@@ -17,7 +17,17 @@
 
             {% for posts in all_post %}
             <div class="card">
-                <h2 class="card-header"><b>{{ posts.title }}</b></h2>
+                <p style="font-size:30px" class="card-header"><b>{{ posts.title }}</b>
+
+               <small style="font-size:12px" class="form-text text-muted"> by
+                   {{ posts.author }}
+               </small>
+
+                                       <!--<a  href="#"> {{posts.author}}  </a>-->
+
+
+
+                </p>
                 <div class="card-body">
                     <!--<h5 class="card-title">Special title treatment</h5>-->
                     <p style="line-height:1.2em; height:3.6em;overflow:hidden; font-size: 15px" class="card-text">
